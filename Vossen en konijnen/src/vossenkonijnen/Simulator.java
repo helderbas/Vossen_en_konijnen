@@ -1,3 +1,4 @@
+package vossenkonijnen;
 import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
@@ -70,7 +71,7 @@ public class Simulator
      * Run the simulation from its current state for a reasonably long period,
      * e.g. 500 steps.
      */
-    public static void main(String[] args)
+    public void simulateLong()
     {
         simulate(500);
     }
