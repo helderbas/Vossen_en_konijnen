@@ -2,9 +2,12 @@ package vossenkonijnen;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.swing.*;
+import javax.swing.border.LineBorder;
 /**
  * A graphical view of the simulation grid.
  * The view displays a colored rectangle for each location 
@@ -15,7 +18,7 @@ import java.util.Map;
  * @author David J. Barnes and Michael Kolling
  * @version 2008.03.30
  */
-public class SimulatorView extends JFrame
+public class SimulatorView extends JFrame implements ActionListener
 {
     // Colors used for empty locations.
     private static final Color EMPTY_COLOR = Color.white;
@@ -32,7 +35,7 @@ public class SimulatorView extends JFrame
     private Map<Class, Color> colors;
     // A statistics object computing and storing simulation information
     private FieldStats stats;
-
+    private JMenuItem Menustep1,Menustep100;
     /**
      * Create a view of the given width and height.
      * @param height The simulation's height.
@@ -48,13 +51,37 @@ public class SimulatorView extends JFrame
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
         
         setLocation(100, 50);
+        setSize(width + 450,400);
         
         fieldView = new FieldView(height, width);
+        
+        Container content = getContentPane();
+        
+        JMenuBar menu = new JMenuBar();
+        JMenu simulatie = new JMenu("simulatie");
+        Menustep1 = new JMenuItem("step 1");
+        Menustep100 = new JMenuItem("step 100");
+        
+       
+        simulatie.add(Menustep1);
+        simulatie.add(Menustep100);
+        
+        menu.add(simulatie);
+        
+        Menustep1.addActionListener(this);
+        Menustep100.addActionListener(this);
+       
 
-        Container contents = getContentPane();
-        contents.add(stepLabel, BorderLayout.NORTH);
-        contents.add(fieldView, BorderLayout.CENTER);
-        contents.add(population, BorderLayout.SOUTH);
+       	
+        content.setLayout(new BorderLayout());
+        content.add(menu, BorderLayout.PAGE_START);
+        content.add(stepLabel, BorderLayout.NORTH);
+        content.add(fieldView, BorderLayout.CENTER);
+        content.add(population, BorderLayout.SOUTH);
+        
+     
+        
+        
         pack();
         setVisible(true);
     }
@@ -213,5 +240,21 @@ public class SimulatorView extends JFrame
             }
         }
     }
+    
+   @Override
+   public void actionPerformed(ActionEvent e) 
+   { 
+	   if(e.getSource() == Menustep1){
+		   
+		   System.out.println("step1");
+		   
+	   }else if(e.getSource() == Menustep100){
+		   
+		   System.out.println("step2");
+		   
+	   }
+	   
+   }
+   
 }
 
