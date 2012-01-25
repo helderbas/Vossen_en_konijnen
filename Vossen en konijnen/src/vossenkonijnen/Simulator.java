@@ -35,6 +35,9 @@ public class Simulator implements ActionListener
     // A graphical view of the simulation.
     private SimulatorView view;
     
+    //the steps we should run
+    private int steps = 0;
+    
     /**
      * Construct a simulation field with default size.
      */
@@ -69,14 +72,16 @@ public class Simulator implements ActionListener
         reset();
     }
     
-    /**
-     * Run the simulation from its current state for a reasonably long period,
-     * e.g. 500 steps.
-     */
-    public void simulateLong()
+  
+    Thread simulateX = new Thread(new Runnable()
     {
-        simulate(500);
-    }
+       public void run()
+       {
+           // this will be run in a separate thread
+
+           simulate(steps);
+       }
+    });
     
     /**
      * Run the simulation from its current state for the given number of steps.
@@ -122,6 +127,7 @@ public class Simulator implements ActionListener
     public void reset()
     {
         step = 0;
+        steps = 0;
         animals.clear();
         populate();
         
@@ -157,13 +163,15 @@ public class Simulator implements ActionListener
     public void actionPerformed(ActionEvent e) 
     { 
  	   if(e.getSource() == view.getMenuItmstep1()){
+ 		   
  		  simulateOneStep();
  		  
  	   }else if(e.getSource() == view.getMenuItmstep100()){
- 		   
- 		  simulate(100);
+ 		  steps = 100;
+ 		  simulateX.start();
  		  
  	   }else if(e.getSource() == view.getMenuItmreset()){
+ 		   
  		   reset();
  	   }
  	   
