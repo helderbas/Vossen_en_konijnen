@@ -121,5 +121,11 @@ public class Rabbit extends Animal
     {
         return age >= BREEDING_AGE;
     }
+    
+    public boolean isAlive()
+    {
+    	return alive;
+    }
+    
 }
 

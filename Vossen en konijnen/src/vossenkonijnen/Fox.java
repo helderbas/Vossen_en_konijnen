@@ -86,6 +86,7 @@ public class Fox extends Animal
         }
     }
 
+   
     /**
      * Increase the age. This could result in the fox's death.
      */
@@ -106,6 +107,15 @@ public class Fox extends Animal
         if(foodLevel <= 0) {
             setDead();
         }
+    }
+    
+    /**
+     * Check whether the animal is alive or not.
+     * @return true if the animal is still alive.
+     */
+    public boolean isAlive()
+    {
+        return alive;
     }
     
     /**

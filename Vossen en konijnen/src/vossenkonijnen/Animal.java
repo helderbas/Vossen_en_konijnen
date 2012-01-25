@@ -9,10 +9,10 @@ import java.util.List;
  * @author David J. Barnes and Michael Kolling
  * @version 2008.03.30
  */
-public abstract class Animal
+public abstract class Animal implements Actor
 { 
     // Whether the animal is alive or not.
-    private boolean alive;
+    protected boolean alive;
     // The animal's field.
     private Field field;
     // The animal's position in the field.
@@ -36,16 +36,14 @@ public abstract class Animal
      * whatever it wants/needs to do.
      * @param newAnimals A list to add newly born animals to.
      */
-    abstract public void act(List<Animal> newAnimals);
+    public abstract void act(List<Animal> newAnimals);
 
     /**
      * Check whether the animal is alive or not.
      * @return true if the animal is still alive.
      */
-    public boolean isAlive()
-    {
-        return alive;
-    }
+    public abstract boolean isAlive();
+
 
     /**
      * Indicate that the animal is no longer alive.
