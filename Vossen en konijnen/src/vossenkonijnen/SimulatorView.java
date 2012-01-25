@@ -35,7 +35,7 @@ public class SimulatorView extends JFrame
     private Map<Class, Color> colors;
     // A statistics object computing and storing simulation information
     private FieldStats stats;
-    private JMenuItem Menustep1,Menustep100;
+    private JMenuItem MenuItmstep1,MenuItmstep100,MenuItmreset;
     /**
      * Create a view of the given width and height.
      * @param height The simulation's height.
@@ -59,18 +59,19 @@ public class SimulatorView extends JFrame
         
         JMenuBar menu = new JMenuBar();
         JMenu simulatie = new JMenu("simulatie");
-        Menustep1 = new JMenuItem("step 1");
-        Menustep100 = new JMenuItem("step 100");
-        
+        MenuItmstep1 = new JMenuItem("step 1");
+        MenuItmstep100 = new JMenuItem("step 100");
+        MenuItmreset = new JMenuItem("reset");
        
-        simulatie.add(Menustep1);
-        simulatie.add(Menustep100);
+        simulatie.add(MenuItmstep1);
+        simulatie.add(MenuItmstep100);
+        simulatie.add(MenuItmreset);
         
         menu.add(simulatie);
         
-        Menustep1.addActionListener(Act);
-        Menustep100.addActionListener(Act);
-         
+        MenuItmstep1.addActionListener(Act);
+        MenuItmstep100.addActionListener(Act);
+        MenuItmreset.addActionListener(Act);
 
        	
         content.setLayout(new BorderLayout());
@@ -241,14 +242,17 @@ public class SimulatorView extends JFrame
         }
     }
 
-	public JMenuItem getMenustep1() {
-		return Menustep1;
+	public JMenuItem getMenuItmstep1() {
+		return MenuItmstep1;
 	}
 
-	public JMenuItem getMenustep100() {
-		return Menustep100;
+	public JMenuItem getMenuItmstep100() {
+		return MenuItmstep100;
 	}
     
+	public JMenuItem getMenuItmreset() {
+		return MenuItmreset;
+	}
   
    
 }

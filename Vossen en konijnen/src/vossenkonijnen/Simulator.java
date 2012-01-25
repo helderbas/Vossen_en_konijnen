@@ -156,15 +156,15 @@ public class Simulator implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) 
     { 
- 	   if(e.getSource() == view.getMenustep1()){
+ 	   if(e.getSource() == view.getMenuItmstep1()){
  		  simulateOneStep();
  		  
+ 	   }else if(e.getSource() == view.getMenuItmstep100()){
  		   
- 	   }else if(e.getSource() == view.getMenustep100()){
- 		   
- 		   	simulate(100);
- 		   
- 		   
+ 		  simulate(100);
+ 		  
+ 	   }else if(e.getSource() == view.getMenuItmreset()){
+ 		   reset();
  	   }
  	   
     }
