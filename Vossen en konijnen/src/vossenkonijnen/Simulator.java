@@ -18,9 +18,9 @@ public class Simulator implements ActionListener
 { 
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
-    private static final int DEFAULT_WIDTH = 200;
+    private static final int DEFAULT_WIDTH = 150;
     // The default depth of the grid.
-    private static final int DEFAULT_DEPTH = 200;
+    private static final int DEFAULT_DEPTH = 150;
     // The probability that a fox will be created in any given grid position.
     private static final double FOX_CREATION_PROBABILITY = 0.04;
     // The probability that a rabbit will be created in any given grid position.
@@ -68,7 +68,7 @@ public class Simulator implements ActionListener
         view = new SimulatorView(depth, width, this);
         view.setColor(Rabbit.class, Color.orange);
         view.setColor(Fox.class, Color.blue);
-        view.setColor(Bear.class, Color.darkGray);
+        view.setColor(Bear.class, Color.red);
         
         // Setup a valid starting point.
         reset();
@@ -129,7 +129,7 @@ public class Simulator implements ActionListener
     public void reset()
     {
         step = 0;
-        steps = 0;
+     
         actors.clear();
         populate();
         
