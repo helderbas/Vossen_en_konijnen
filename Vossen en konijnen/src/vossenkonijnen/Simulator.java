@@ -73,15 +73,7 @@ public class Simulator implements ActionListener
     }
     
   
-    Thread simulateX = new Thread(new Runnable()
-    {
-       public void run()
-       {
-           // this will be run in a separate thread
-
-           simulate(steps);
-       }
-    });
+ 
     
     /**
      * Run the simulation from its current state for the given number of steps.
@@ -168,7 +160,22 @@ public class Simulator implements ActionListener
  		  
  	   }else if(e.getSource() == view.getMenuItmstep100()){
  		  steps = 100;
+ 		   Thread simulateX = new Thread(new Runnable()
+ 		    {
+ 		       public void run()
+ 		       {
+ 		           // this will be run in a separate thread
+
+ 		           simulate(steps);
+ 		           
+ 		       }
+ 		      
+ 		    });
+ 		   
+ 		 
  		  simulateX.start();
+ 		 
+ 		  
  		  
  	   }else if(e.getSource() == view.getMenuItmreset()){
  		   
