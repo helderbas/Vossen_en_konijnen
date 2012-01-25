@@ -37,12 +37,16 @@ public abstract class Animal implements Actor
      * @param newAnimals A list to add newly born animals to.
      */
     public abstract void act(List<Animal> newAnimals);
+   
 
     /**
      * Check whether the animal is alive or not.
      * @return true if the animal is still alive.
      */
-    public abstract boolean isAlive();
+    public boolean isAlive()
+    {
+    	return alive
+    }
 
 
     /**
