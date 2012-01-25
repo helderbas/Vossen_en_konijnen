@@ -1,5 +1,6 @@
 package vossenkonijnen;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -39,21 +40,28 @@ public class Bear extends Animal
 	}
 	
 	public void act(List<Actor> newBears)
-	{
-	    incrementAge();
-	    if(isAlive()) {
-	        giveBirth(newBears);            
-	        // Try to move into a free location.
-		Location newLocation = getField().freeAdjacentLocation(getLocation());
-		if(newLocation != null) {
-	    setLocation(newLocation);
-			}
-			else {
-			    // Overcrowding.
-	            setDead();
-	        }
-	    }
-	}
+    {
+        incrementAge();
+        incrementHunger();
+        if(isAlive()) {
+            giveBirth(newBears);            
+            // Move towards a source of food if found.
+            Location location = getLocation();
+            Location newLocation = findFood(location);
+            if(newLocation == null) { 
+                // No food found - try to move to a free location.
+                newLocation = getField().freeAdjacentLocation(location);
+            }
+            // See if it was possible to move.
+            if(newLocation != null) {
+                setLocation(newLocation);
+            }
+            else {
+                // Overcrowding.
+                setDead();
+            }
+        }
+    }
 	
 	 private void incrementAge()
 	{
@@ -75,6 +83,42 @@ public class Bear extends Animal
 	            Bear young = new Bear(false, field, loc);
 	            newBears.add(young);
 	        }
+    }
+	 
+ 	private Location findFood(Location location)
+    {
+        Field field = getField();
+        List<Location> adjacent = field.adjacentLocations(getLocation());
+        Iterator<Location> it = adjacent.iterator();
+        while(it.hasNext()) {
+            Location where = it.next();
+            Object animal = field.getObjectAt(where);
+            if(animal instanceof Rabbit) {
+                Rabbit rabbit = (Rabbit) animal;
+                if(rabbit.isAlive()) { 
+                    rabbit.setDead();
+                    return where;
+                }
+            }
+            if(animal instanceof Fox) {
+                Fox fox = (Fox) animal;
+                if(fox.isAlive()) { 
+                    fox.setDead(); 
+                    foodLevel = FOOD_VALUE;
+                    // Remove the dead rabbit from the field.
+                    return where;
+                }
+            }
+        }
+        return null;
+    }
+	
+	private void incrementHunger()
+    {
+        foodLevel--;
+        if(foodLevel <= 0) {
+            setDead();
+        }
     }
 	
 	private int breed()

@@ -18,14 +18,15 @@ public class Simulator implements ActionListener
 { 
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
-    private static final int DEFAULT_WIDTH = 50;
+    private static final int DEFAULT_WIDTH = 200;
     // The default depth of the grid.
-    private static final int DEFAULT_DEPTH = 50;
+    private static final int DEFAULT_DEPTH = 200;
     // The probability that a fox will be created in any given grid position.
     private static final double FOX_CREATION_PROBABILITY = 0.04;
     // The probability that a rabbit will be created in any given grid position.
     private static final double RABBIT_CREATION_PROBABILITY = 0.08;    
 
+    private static final double BEAR_CREATION_PROBABILITY = 0.01;
     // List of animals in the field.
     private List<Actor> actors;
     // The current state of the field.
@@ -67,13 +68,22 @@ public class Simulator implements ActionListener
         view = new SimulatorView(depth, width, this);
         view.setColor(Rabbit.class, Color.orange);
         view.setColor(Fox.class, Color.blue);
+        view.setColor(Bear.class, Color.darkGray);
         
         // Setup a valid starting point.
         reset();
     }
     
   
- 
+    Thread simulateX = new Thread(new Runnable()
+    {
+       public void run()
+       {
+           // this will be run in a separate thread
+
+           simulate(steps);
+       }
+    });
     
     /**
      * Run the simulation from its current state for the given number of steps.
@@ -145,6 +155,11 @@ public class Simulator implements ActionListener
                     Location location = new Location(row, col);
                     Rabbit rabbit = new Rabbit(true, field, location);
                     actors.add(rabbit);
+                }
+                else if(rand.nextDouble() <= BEAR_CREATION_PROBABILITY) {
+                    Location location = new Location(row, col);
+                    Bear bear = new Bear(true, field, location);
+                    actors.add(bear);
                 }
                 // else leave the location empty.
             }
