@@ -10,7 +10,7 @@ import java.util.Random;
  * @version 2008.03.30
  */
 public class Rabbit extends Animal
-{
+{ 
     // Characteristics shared by all rabbits (static fields).
 
     // The age at which a rabbit can start to breed.

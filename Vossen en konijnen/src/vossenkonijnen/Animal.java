@@ -10,7 +10,7 @@ import java.util.List;
  * @version 2008.03.30
  */
 public abstract class Animal
-{
+{ 
     // Whether the animal is alive or not.
     private boolean alive;
     // The animal's field.

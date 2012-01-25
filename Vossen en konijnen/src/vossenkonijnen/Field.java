@@ -13,7 +13,7 @@ import java.util.Random;
  * @version 2008.03.30
  */
 public class Field
-{
+{ 
     // A random number generator for providing random locations.
     private static final Random rand = Randomizer.getRandom();
     

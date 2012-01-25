@@ -9,4 +9,4 @@ public class Main {
 		sim.simulateLong();
 	}
 
-}
+} 

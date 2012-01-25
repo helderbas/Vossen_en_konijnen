@@ -11,7 +11,7 @@ import java.util.HashMap;
  * @version 2008.03.30
  */
 public class FieldStats
-{
+{ 
     // Counters for each type of entity (fox, rabbit, etc.) in the simulation.
     private HashMap<Class, Counter> counters;
     // Whether the counters are currently up to date.

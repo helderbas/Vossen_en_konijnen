@@ -70,7 +70,7 @@ public class SimulatorView extends JFrame implements ActionListener
         
         Menustep1.addActionListener(this);
         Menustep100.addActionListener(this);
-       
+         
 
        	
         content.setLayout(new BorderLayout());

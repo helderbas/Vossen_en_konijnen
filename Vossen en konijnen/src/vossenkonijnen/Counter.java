@@ -11,7 +11,7 @@ import java.awt.Color;
  * @version 2008.03.30
  */
 public class Counter
-{
+{ 
     // A name for this type of simulation participant
     private String name;
     // How many of this type exist in the simulation.
