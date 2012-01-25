@@ -36,7 +36,7 @@ public abstract class Animal implements Actor
      * whatever it wants/needs to do.
      * @param newAnimals A list to add newly born animals to.
      */
-    public abstract void act(List<Animal> newAnimals);
+    public abstract void act(List<Actor> newAnimals);
    
 
     /**
@@ -45,7 +45,7 @@ public abstract class Animal implements Actor
      */
     public boolean isAlive()
     {
-    	return alive
+    	return alive;
     }
 
 

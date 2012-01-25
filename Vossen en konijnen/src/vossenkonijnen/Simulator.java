@@ -105,18 +105,18 @@ public class Simulator implements ActionListener
         step++;
 
         // Provide space for newborn animals.
-        List<Animal> newAnimals = new ArrayList<Animal>();        
+        List<Actor> newActors = new ArrayList<Actor>();        
         // Let all rabbits act.
         for(Iterator<Actor> it = actors.iterator(); it.hasNext(); ) {
             Actor actor = it.next();
-            actor.act(newAnimals);
+            actor.act(newActors);
             if(! actor.isAlive()) {
                 it.remove();
             }
         }
                
         // Add the newly born foxes and rabbits to the main lists.
-        actors.addAll(newAnimals);
+        actors.addAll(newActors);
 
         view.showStatus(step, field);
     }

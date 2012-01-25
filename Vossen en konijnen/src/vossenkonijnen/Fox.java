@@ -62,7 +62,7 @@ public class Fox extends Animal
      * @param field The field currently occupied.
      * @param newFoxes A list to add newly born foxes to.
      */
-    public void act(List<Animal> newFoxes)
+    public void act(List<Actor> newFoxes)
     {
         incrementAge();
         incrementHunger();
@@ -150,7 +150,7 @@ public class Fox extends Animal
      * New births will be made into free adjacent locations.
      * @param newFoxes A list to add newly born foxes to.
      */
-    private void giveBirth(List<Animal> newFoxes)
+    private void giveBirth(List<Actor> newFoxes)
     {
         // New foxes are born into adjacent locations.
         // Get a list of adjacent free locations.

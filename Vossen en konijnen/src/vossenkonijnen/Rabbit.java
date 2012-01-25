@@ -51,7 +51,7 @@ public class Rabbit extends Animal
      * around. Sometimes it will breed or die of old age.
      * @param newRabbits A list to add newly born rabbits to.
      */
-    public void act(List<Animal> newRabbits)
+    public void act(List<Actor> newRabbits)
     {
         incrementAge();
         if(isAlive()) {
@@ -85,7 +85,7 @@ public class Rabbit extends Animal
      * New births will be made into free adjacent locations.
      * @param newRabbits A list to add newly born rabbits to.
      */
-    private void giveBirth(List<Animal> newRabbits)
+    private void giveBirth(List<Actor> newRabbits)
     {
         // New rabbits are born into adjacent locations.
         // Get a list of adjacent free locations.
