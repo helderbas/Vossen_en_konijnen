@@ -18,7 +18,7 @@ import javax.swing.border.LineBorder;
  * @author David J. Barnes and Michael Kolling
  * @version 2008.03.30
  */
-public class SimulatorView extends JFrame implements ActionListener
+public class SimulatorView extends JFrame 
 {
     // Colors used for empty locations.
     private static final Color EMPTY_COLOR = Color.white;
@@ -41,7 +41,7 @@ public class SimulatorView extends JFrame implements ActionListener
      * @param height The simulation's height.
      * @param width  The simulation's width.
      */
-    public SimulatorView(int height, int width)
+    public SimulatorView(int height, int width, ActionListener Act)
     {
         stats = new FieldStats();
         colors = new LinkedHashMap<Class, Color>();
@@ -68,8 +68,8 @@ public class SimulatorView extends JFrame implements ActionListener
         
         menu.add(simulatie);
         
-        Menustep1.addActionListener(this);
-        Menustep100.addActionListener(this);
+        Menustep1.addActionListener(Act);
+        Menustep100.addActionListener(Act);
          
 
        	
@@ -240,21 +240,16 @@ public class SimulatorView extends JFrame implements ActionListener
             }
         }
     }
+
+	public JMenuItem getMenustep1() {
+		return Menustep1;
+	}
+
+	public JMenuItem getMenustep100() {
+		return Menustep100;
+	}
     
-   @Override
-   public void actionPerformed(ActionEvent e) 
-   { 
-	   if(e.getSource() == Menustep1){
-		   
-		   System.out.println("step1");
-		   
-	   }else if(e.getSource() == Menustep100){
-		   
-		   System.out.println("step2");
-		   
-	   }
-	   
-   }
+  
    
 }
 
